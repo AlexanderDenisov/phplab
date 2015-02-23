@@ -2,11 +2,7 @@
 
 class Database
     {
-    private $db = NULL;
-    private $result = NULL;
-    private $data = NULL;
-    private $row = NULL;
-    private $sql = NULL;
+
     public function __construct($host, $user, $password, $base)
     {
         $this->db = mysql_connect($host, $user, $password);
@@ -14,30 +10,31 @@ class Database
     }
     public function query($sql)
     {
-        $this->result = mysql_query($sql);
-         while(false !== ($this->row = mysql_fetch_assoc($this->result))) {
-             $this->data[] = $this->row;
-         } return $this->data;
+        $result = mysql_query($sql);
+        $data = [];
+         while(false !== ($row = mysql_fetch_assoc($result))) {
+             $data[] = $row;
+         } return $data;
     }
     public function exec($sql)
     {
-        $this->result = mysql_query($this->sql);
-        return $this->result;
+        $result = mysql_query($sql);
+        return $result;
     }
     public function select()
     {
-        $this->sql = 'SELECT * FROM news';
-        return $this->query($this->sql);
+        $sql = 'SELECT * FROM news';
+        return $this->query($sql);
     }
     public function insert()
     {
-        $this->sql = 'INSERT INTO news (id, date, title, path) VALUES (NULL, \'22.02.2015\', \'Привет лунатикам\', \'\')';
-        return $this->exec($this->sql);
+        $sql = 'INSERT INTO news (id, date, title, path) VALUES (NULL, \'22.02.2015\', \'Привет лунатикам\', \'\')';
+        return $this->exec($sql);
     }
     public function delete()
     {
-        $this->sql = 'DELETE FROM news WHERE title=\'Привет лунатикам\'';
-        return $this->exec($this->sql);
+        $sql = 'DELETE FROM news WHERE title=\'Привет лунатикам\'';
+        return $this->exec($sql);
     }
 }
 

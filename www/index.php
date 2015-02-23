@@ -5,8 +5,8 @@ class Database
 
     public function __construct($host, $user, $password, $base)
     {
-        $this->db = mysql_connect($host, $user, $password);
-        $this->db = mysql_select_db($base);
+        mysql_connect($host, $user, $password);
+        mysql_select_db($base);
     }
     public function query($sql)
     {

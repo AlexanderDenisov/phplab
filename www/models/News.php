@@ -3,19 +3,16 @@
 require_once __DIR__ . '/../classes/DB.php';
 
 
-class News {
+class News
+    extends AbstractModel
+{
     public $id;
     public $date;
     public $title;
     public $path;
 
-    public static function getAll() {
-        $db = new DB();
-        return $db->queryAll('SELECT * FROM news ORDER by date DESC', 'News');
-    }
+    protected static $table = 'news';
+    protected static $class = 'News';
 
-    public static function getOne($id) {
-        $db = new DB();
-        return $db->queryOne('SELECT * FROM news WHERE id=' . $id, 'News');
-    }
+
 } 

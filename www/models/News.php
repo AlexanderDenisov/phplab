@@ -11,6 +11,11 @@ class News {
 
     public static function getAll() {
         $db = new DB();
-        return $db->query('SELECT * FROM news', 'News');
+        return $db->queryAll('SELECT * FROM news ORDER by date DESC', 'News');
+    }
+
+    public static function getOne($id) {
+        $db = new DB();
+        return $db->queryOne('SELECT * FROM news WHERE id=' . $id, 'News');
     }
 } 

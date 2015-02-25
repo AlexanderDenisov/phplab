@@ -23,4 +23,13 @@ class DB
     public function queryOne($sql, $class='stdClass') {
         return $this->queryAll($sql, $class)[0];
     }
+
+    public function addNews($sql, $class='stdClass') {
+        $res = mysql_query($sql);
+        if (false === $res) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 } 

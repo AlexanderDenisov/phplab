@@ -47,7 +47,7 @@ abstract class AbstractAdminController
             return $db->addNews("INSERT INTO news
 	(date, title, path)
 	VALUES
-	('" . $data['date'] . "','" . $data['title'] . "', '" . $data['news'] . "')", static::$class);
+	('" . $data['date'] . "','" . $data['title'] . "', '" . $data['path'] . "')", static::$class);
             header('Location: /index.php');
             die;
         }

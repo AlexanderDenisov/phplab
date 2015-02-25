@@ -41,11 +41,16 @@ abstract class AbstractAdminController
                     $data['path'] = $res;
                 }
             }
-            if (isset($data['date']) && isset($data['title']) && isset($data['path'])) {
-                $db = new DB();
-                return $db->addNews('INSERT INTO ' . static::$table . ' (date, title) VALUES (' . $data['date'] . '
-        , ' . $data['title'] . ', ' . $data['path'] . ')', static::$class);
-            }
+        }
+        if (isset($data['date']) && isset($data['title']) && isset($data['path'])) {
+            $db = new DB();
+            return $db->addNews("INSERT INTO news
+	(date, title, path)
+	VALUES
+	('" . $data['date'] . "','" . $data['title'] . "', '" . $data['news'] . "')", static::$class);
+            header('Location: /index.php');
+            die;
         }
     }
 }
+

@@ -6,4 +6,4 @@
     <label for="news">Файл</label>
     <input type="file" id="path" name="path">
     <input type="submit">
-</form>
+</fo

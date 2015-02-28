@@ -1,0 +1,3 @@
+RewriteEngine On
+RewriteRule ^([^/]*)\.html?$ /index.php?ctrl=AllNews&act=$1 [L,QSA]
+RewriteRule ^([^/]*)\.html?$ /index.php?ctrl=AddNews&act=$1 [L,QSA]

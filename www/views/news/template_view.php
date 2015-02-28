@@ -5,6 +5,6 @@
     <title>Главная</title>
 </head>
 <body>
-<?php include __DIR__ . '/../views/' . $this->template; ?>
+<?php include __DIR__ . $template_content; ?>
 </body>
 </html>

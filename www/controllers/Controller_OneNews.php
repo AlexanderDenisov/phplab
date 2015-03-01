@@ -10,8 +10,9 @@ class Controller_OneNews {
         $view = new View();
         //$view->assign('item', $item);
         $view->item = $item;
-        $view->display('news/template_OneNews.php');
         //include __DIR__ . '/../views/news/template_view.php';
+        $view->display('template_OneNews.php');
+
     }
 
 } 

@@ -8,6 +8,8 @@ function __autoload($class) {
         require __DIR__ . '/models/' . $class . '.php';
     } elseif (file_exists(__DIR__ .'/classes/' . $class . '.php')) {
     require __DIR__ . '/classes/' . $class . '.php';
-}
+}   elseif (file_exists(__DIR__ .'/views/news' . $class . '.php')) {
+        require __DIR__ . '/views/news' . $class . '.php';
+    }
 
 }

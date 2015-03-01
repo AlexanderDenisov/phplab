@@ -11,7 +11,7 @@ abstract class AbstractModel
     public static function getAll()
     {
         $db = new DB();
-        return $db->queryAll('SELECT * FROM ' . static::$table . ' ORDER by date DESC', static::$class);
+        return $db->queryAll('SELECT * FROM ' . static::$table . ' ORDER by id DESC', static::$class);
     }
 
     public static function getOne($id)

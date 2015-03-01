@@ -8,8 +8,9 @@ class Controller_AddNews {
         $view = new View();
         //$view->assign('items', $items);
         $view->items = $items;
-        $view->display('news/template_AddNews.php');
         //include __DIR__ . '/../views/news/template_view.php';
+        $view->display('template_AddNews.php');
+
     }
 
 }

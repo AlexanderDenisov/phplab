@@ -1,3 +1,6 @@
 RewriteEngine On
-RewriteRule ^([^/]*)\.html?$ /index.php?ctrl=AllNews&act=$1 [L,QSA]
-RewriteRule ^([^/]*)\.html?$ /index.php?ctrl=AddNews&act=$1 [L,QSA]
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^/]*)$ /index.php?ctrl=$1&act=All [L,QSA]
+RewriteRule ^([^/]*)/([^/]*)$ /index.php?ctrl=$1&act=One&id=$2 [L,QSA]
+#RewriteRule ^([^/]*)$ /index.php?ctrl=$1&act=Add [L,QSA]

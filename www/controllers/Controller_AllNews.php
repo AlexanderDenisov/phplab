@@ -9,7 +9,7 @@ class Controller_AllNews {
         $view = new View();
         //$view->assign('items', $items);
         $view->items = $items;
-        $view->display('news/template_AllNews.php');
-        //include __DIR__ . '/../views/news/template_view.php';
+        $view->display('template_AllNews.php');
+
     }
 } 

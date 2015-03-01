@@ -4,41 +4,43 @@
 class MyIterator
     implements Iterator
 {
-    private $position = 0;
     private $data = [];
 
-    public function __construct()
+    public function __construct($array)
     {
-        $this->position = 0;
+        if (is_array($array)) {
+            $this->data = $array;
+        }
     }
 
-    function rewind()
+    public function rewind()
     {
-        //var_dump(__METHOD__);
-        $this->position = 0;
+        reset($this->data);
     }
 
-    function current()
+    public function current()
     {
-        //var_dump(__METHOD__);
-        return $this->data[$this->position];
+        $data = current($this->data);
+        return $data;
     }
 
-    function key()
+    public function key()
     {
-        //var_dump(__METHOD__);
-        return $this->position;
+        $data = key($this->data);
+        return $data;
     }
 
-    function next()
+    public function next()
     {
-        //var_dump(__METHOD__);
-        ++$this->position;
+        $data = next($this->data);
+        return $data;
     }
 
-    function valid()
+    public function valid()
     {
-        //var_dump(__METHOD__);
-        return isset($this->data[$this->position]);
+        $key = key($this->data);
+        $data = ($key !== NULL && $key !== FALSE);
+        return $data;
     }
+
 }

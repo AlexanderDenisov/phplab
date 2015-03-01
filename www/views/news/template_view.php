@@ -6,6 +6,7 @@
 </head>
 <body>
 <h1>НОВОСТНАЯ ЛЕНТА. КУРС PHP_2.</h1>
+
 <div><a href="">Зарегистрироваться</a></div>
 <div><a href="">Войти</a></div>
 <div><a href="index.php?ctrl=AddNews&act=Add">Добавить новость</a></div>

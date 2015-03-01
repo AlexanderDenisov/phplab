@@ -1,9 +1,11 @@
 <?php
 
 
-class Controller_AddNews {
+class Controller_AddNews
+{
 
-    public function  actionAdd() {
+    public function  actionAdd()
+    {
         $items = News::addOneNews();
         $view = new View();
         $view->items = $items;

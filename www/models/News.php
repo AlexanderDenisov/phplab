@@ -1,7 +1,6 @@
 <?php
 
 
-
 class News
     extends AbstractModel
 {

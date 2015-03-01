@@ -2,7 +2,7 @@
 
 
 abstract class AbstractModel
-        implements IModel
+    implements IModel
 {
 
     protected static $table;

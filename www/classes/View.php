@@ -5,10 +5,6 @@ class View
 
     protected $data = [];
 
-    /*public function assign($name, $value) {
-        $this->data[$name] = $value;
-    }*/
-
     public function __set($k, $v) {
         $this->data[$k] = $v;
     }

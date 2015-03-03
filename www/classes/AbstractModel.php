@@ -5,11 +5,17 @@ abstract class AbstractModel
     //implements IModel
 {
     static protected $table;
+    protected $data = [];
 
-    /*public static function getTable()
+    public function __set($k, $v)
     {
-        return static::$table;
-    }*/
+        $this->data[$k] = $v;
+    }
+
+    public function __get($k)
+    {
+        return $this->data[$k];
+    }
 
     public static function findAll()
     {
@@ -20,11 +26,50 @@ abstract class AbstractModel
         return $db->query($sql);
     }
 
+    public function fill()
+    {
+        if (!empty($_POST)) {
+            $data = [];
+            if (!empty($_POST['title'])) {
+                $data['title'] = $_POST['title'];
+            }
+            if (!empty($_POST['date'])) {
+                $data['date'] = $_POST['date'];
+            }
+            if (!empty($_POST['text_news'])) {
+                $data['text_news'] = $_POST['text_news'];
+            } $this->insert();
+        } else {
+            echo 'Нет данных';
+            die;
+        }
+    }
+
     public static function findOneByPk($id)
     {
         $sql = 'SELECT * FROM ' . static::$table . ' WHERE id=:id';
         $db = new DB();
-        return $db->query($sql, [':id' => $id]);
+        return $db->query($sql, [':id' => $id])[0];
+    }
+
+    public function insert()
+    {
+        $cols = array_keys($this->data);
+        $data = [];
+
+        foreach ($cols as $col) {
+            $data[':' . $col] = $this->data[$col];
+        }
+
+        $sql = 'INSERT INTO ' . static::$table . '
+         (' . implode(', ', $cols) . ')
+         VALUES
+         (' . implode(', ', array_keys($data)) . ')
+         ';
+
+        $db = new DB();
+        $db->execute($sql, $data);
+
     }
 
 }

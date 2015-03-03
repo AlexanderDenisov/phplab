@@ -20,23 +20,6 @@ abstract class AbstractModel
         return $db->queryOne('SELECT * FROM ' . static::$table . ' WHERE id=' . $id, static::$class);
     }
 
-    public static function File_upload($field)
-    {
-        if (empty($_FILES))
-            return false;
-        if (0 != $_FILES[$field]['error'])
-            return false;
-        if (is_uploaded_file($_FILES[$field]['tmp_name'])) {
-            $res = move_uploaded_file($_FILES[$field]['tmp_name'], __DIR__ . '/../news/' . $_FILES[$field]['name']);
-            if (!$res) {
-                return false;
-            } else {
-                return '/news/' . $_FILES[$field]['name'];
-            }
-        }
-        return false;
-    }
-
     public static function addOneNews()
     {
         if (!empty($_POST)) {
@@ -47,20 +30,17 @@ abstract class AbstractModel
             if (!empty($_POST['date'])) {
                 $data['date'] = $_POST['date'];
             }
-            if (!empty($_FILES)) {
-                $res = self::File_upload('path');
-                if (false !== $res) {
-                    $data['path'] = $res;
-                }
+            if (!empty($_POST['text_news'])) {
+                $data['text_news'] = $_POST['text_news'];
             }
         }
-        if (isset($data['date']) && isset($data['title']) && isset($data['path'])) {
+        if (isset($data['date']) && isset($data['title']) && isset($data['text_news'])) {
             $data_date = $data['date'];
             $data_title = $data['title'];
-            $data_path = $data['path'];
+            $data_text_news = $data['text_news'];
             $db = new DB();
-            $sql = $db->addNews('INSERT INTO news (id, date, title, path) VALUES
-(NULL, "' . $data_date . '", "' . $data_title . '", "' . $data_path . '")', static::$class);
+            $sql = $db->addNews('INSERT INTO news (id, date, title, text_news) VALUES
+(NULL, "' . $data_date . '", "' . $data_title . '", "' . $data_text_news . '")', static::$class);
             die;
         }
 

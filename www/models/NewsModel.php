@@ -11,4 +11,9 @@ class NewsModel
 {
     protected static $table = 'news';
 
+    public $id;
+    public $title;
+    public $text_news;
+
+
 } 

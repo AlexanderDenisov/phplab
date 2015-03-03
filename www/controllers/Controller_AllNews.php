@@ -6,9 +6,12 @@ class Controller_AllNews
 
     public function actionAll()
     {
-        $db = new DB();
+
+        var_dump(NewsModel::findAll());
+
+        /*$db = new DB();
         $res = $db->query('SELECT * FROM news WHERE id=:id', [':id' => 2]);
-        var_dump($res);
+        var_dump($res);*/
         die;
 
         /*$items = News::getAll();

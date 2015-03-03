@@ -2,8 +2,19 @@
 
 
 abstract class AbstractModel
-    implements IModel
+    //implements IModel
 {
+    static protected $table;
+
+    public static function getTable() {
+        return static::$table;
+    }
+
+
+}
+
+
+/*{
 
     protected static $table;
     protected static $class;
@@ -45,4 +56,4 @@ abstract class AbstractModel
         }
 
     }
-}
+}*/

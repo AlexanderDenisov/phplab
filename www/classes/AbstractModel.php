@@ -87,4 +87,11 @@ abstract class AbstractModel
 
     }
 
+    public static function deleteNews($id)
+    {
+        $sql = 'DELETE FROM ' . static::$table . ' WHERE id=:id';
+        $db = new DB();
+        $db->execute($sql, [':id' => $id]);
+    }
+
 }

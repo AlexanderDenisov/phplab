@@ -1,3 +1,4 @@
+<div><?php include __DIR__ . '/template_FindByColumn.php'; ?></div>
 <?php foreach ($items as $item): ?>
     <h1><?php echo $item->title; ?></h1>
     <div><?php echo $item->date; ?></div>

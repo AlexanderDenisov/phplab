@@ -27,32 +27,4 @@ class DB
         $sth = $this->dbh->prepare($sql);
         return $sth->execute($params);
     }
-
-    /*public function queryAll($sql, $class = 'stdClass')
-    {
-        $res = mysql_query($sql);
-        if (false === $res) {
-            return false;
-        }
-        $ret = [];
-        while ($row = mysql_fetch_object($res, $class)) {
-            $ret[] = $row;
-        }
-        return $ret;
-    }
-
-    public function queryOne($sql, $class = 'stdClass')
-    {
-        return $this->queryAll($sql, $class)[0];
-    }
-
-    public function addNews($sql, $class = 'stdClass')
-    {
-        $res = mysql_query($sql);
-        if (false === $res) {
-            return false;
-        } else {
-            return true;
-        }
-    }*/
 } 

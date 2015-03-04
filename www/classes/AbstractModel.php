@@ -7,6 +7,7 @@ abstract class AbstractModel
     static protected $table;
     protected $data = [];
 
+
     public function __set($k, $v)
     {
         $this->data[$k] = $v;
@@ -20,7 +21,7 @@ abstract class AbstractModel
     public static function findAll()
     {
         $class = get_called_class();
-        $sql = 'SELECT * FROM ' . static::$table;
+        $sql = 'SELECT * FROM ' . static::$table . ' ORDER BY id DESC';
         $db = new DB();
         $db->setClassName($class);
         return $db->query($sql);
@@ -31,18 +32,22 @@ abstract class AbstractModel
         if (!empty($_POST)) {
             $data = [];
             if (!empty($_POST['title'])) {
-                $data['title'] = $_POST['title'];
+                $this->data['title'] = $_POST['title'];
             }
             if (!empty($_POST['date'])) {
-                $data['date'] = $_POST['date'];
+                $this->data['date'] = $_POST['date'];
             }
             if (!empty($_POST['text_news'])) {
-                $data['text_news'] = $_POST['text_news'];
-            } $this->insert();
+                $this->data['text_news'] = $_POST['text_news'];
+            }
+        }
+        if (isset($this->data['date']) && isset($this->data['title']) && isset($this->data['text_news'])) {
+            $this->insert();
+            echo 'Новость добавлена';
         } else {
-            echo 'Нет данных';
             die;
         }
+
     }
 
     public static function findOneByPk($id)
@@ -54,23 +59,25 @@ abstract class AbstractModel
 
     public function insert()
     {
-        $cols = array_keys($this->data);
-        $data = [];
 
-        foreach ($cols as $col) {
-            $data[':' . $col] = $this->data[$col];
-        }
+            $cols = array_keys($this->data);
+            $data = [];
 
-        $sql = 'INSERT INTO ' . static::$table . '
+            foreach ($cols as $col) {
+                $data[':' . $col] = $this->data[$col];
+            }
+
+            $sql = 'INSERT INTO ' . static::$table . '
          (' . implode(', ', $cols) . ')
          VALUES
          (' . implode(', ', array_keys($data)) . ')
          ';
 
-        $db = new DB();
-        $db->execute($sql, $data);
+            $db = new DB();
+            $db->execute($sql, $data);
+        }
 
-    }
+   // }
 
 }
 

@@ -12,7 +12,7 @@ class Controller_DeleteNews
     {
         $id = $_GET['id'];
         $item = new NewsModel();
-        $item = NewsModel::deleteNews($id);
+        $item->deleteNews($id);
         $view = new View();
         $view->item = $item;
         $view->display('template_OneNews.php');

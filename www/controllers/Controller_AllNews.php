@@ -6,7 +6,6 @@ class Controller_AllNews
 
     public function actionAll()
     {
-        $all_articles = new NewsModel();
         $all_articles = NewsModel::findAll();
         $view = new View();
         $view->items = $all_articles;

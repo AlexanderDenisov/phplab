@@ -6,10 +6,11 @@ class Controller_FindByColumn
     {
         $column = $_POST['column'];
         $values = $_POST['values'];
-        $items = NewsModel::findByColumn($column, $values);
+        $item = NewsModel::findByColumn($column, $values);
+        //var_dump($items);
         $view = new View();
-        $view->items = $items;
-        $view->display('template_AllNews.php');
+        $view->item = $item;
+        $view->display('template_OneNews.php');
     }
 
 } 

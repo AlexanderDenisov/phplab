@@ -6,7 +6,6 @@ class Controller_FindByColumn
     {
         $column = $_POST['column'];
         $values = $_POST['values'];
-        $items = new NewsModel();
         $items = NewsModel::findByColumn($column, $values);
         $view = new View();
         $view->items = $items;

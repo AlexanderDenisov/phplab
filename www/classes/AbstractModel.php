@@ -27,7 +27,7 @@ abstract class AbstractModel
         return $db->query($sql);
     }
 
-    public function fill()
+    /*public function fill()
     {
         if (!empty($_POST)) {
             $data = [];
@@ -48,7 +48,7 @@ abstract class AbstractModel
             die;
         }
 
-    }
+    }*/
 
     public static function findOneByPk($id)
     {
@@ -77,10 +77,10 @@ abstract class AbstractModel
         $db->execute($sql, $data);
     }
 
-    public static function findByColumn($column, $value)
+    public static function findByColumn($column, $values)
     {
         $class = get_called_class();
-        $sql = 'SELECT * FROM ' . static::$table . ' WHERE ' . $column . ' LIKE "%' . $value . '%" LIMIT 0, 50 ';
+        $sql = 'SELECT * FROM ' . static::$table . ' WHERE ' . $column . ' LIKE "%' . $values . '%" LIMIT 0, 50 ';
         $db = new DB();
         $db->setClassName($class);
         return $db->query($sql);

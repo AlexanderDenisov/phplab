@@ -5,6 +5,9 @@ class DB
     private $dbh;
     private $className = 'stdClass';
 
+    /**
+     *
+     */
     public function __construct()
     {
         $this->dbh = new PDO('mysql:dbname=test;host=localhost', 'root', '');
@@ -26,5 +29,10 @@ class DB
     {
         $sth = $this->dbh->prepare($sql);
         return $sth->execute($params);
+    }
+
+    public function lastInsertId()
+    {
+        return $this->dbh->lastInsertId();
     }
 } 

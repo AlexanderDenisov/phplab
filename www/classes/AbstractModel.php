@@ -57,6 +57,7 @@ abstract class AbstractModel
 
         $db = new DB();
         $db->execute($sql, $data);
+        $this->id = $db->lastInsertId();
     }
 
     public static function findByColumn($column, $values)

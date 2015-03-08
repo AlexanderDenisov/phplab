@@ -18,6 +18,11 @@ abstract class AbstractModel
         return $this->data[$k];
     }
 
+    public function __isset($k)
+    {
+        return isset($this->data[$k]);
+    }
+
     public static function findAll()
     {
         $class = get_called_class();
@@ -26,29 +31,6 @@ abstract class AbstractModel
         $db->setClassName($class);
         return $db->query($sql);
     }
-
-    /*public function fill()
-    {
-        if (!empty($_POST)) {
-            $data = [];
-            if (!empty($_POST['title'])) {
-                $this->data['title'] = $_POST['title'];
-            }
-            if (!empty($_POST['date'])) {
-                $this->data['date'] = $_POST['date'];
-            }
-            if (!empty($_POST['text_news'])) {
-                $this->data['text_news'] = $_POST['text_news'];
-            }
-        }
-        if (isset($this->data['date']) && isset($this->data['title']) && isset($this->data['text_news'])) {
-            $this->insert();
-            echo 'Новость добавлена';
-        } else {
-            die;
-        }
-
-    }*/
 
     public static function findOneByPk($id)
     {
@@ -79,11 +61,15 @@ abstract class AbstractModel
 
     public static function findByColumn($column, $values)
     {
-        $class = get_called_class();
-        $sql = 'SELECT * FROM ' . static::$table . ' WHERE ' . $column . ' LIKE "%' . $values . '%" LIMIT 0, 50 ';
         $db = new DB();
-        $db->setClassName($class);
-        return $db->query($sql);
+        $db->setClassName(get_called_class());
+        $sql = 'SELECT * FROM ' . static::$table . ' WHERE ' . $column . ' =:values LIMIT 0, 50 ';
+        $res = $db->query($sql, [':values' => $values]);
+        if(!empty($res)) {
+            return $res[0];
+        } else {
+            return false;
+        }
 
     }
 

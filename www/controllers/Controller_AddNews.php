@@ -11,6 +11,9 @@ class Controller_AddNews
         $article->title = $_POST['title'];
         $article->text_news = $_POST['text_news'];
         $article->insert();
+        $view = new View();
+        $view->item = $article;
+        $view->display('template_OneNews.php');
     }
 
 }

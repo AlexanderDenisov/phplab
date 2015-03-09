@@ -49,7 +49,7 @@ abstract class AbstractModel
             $data[':' . $col] = $this->data[$col];
         }
 
-        $sql = 'INSERT INTO ' . static::$table . '
+       $sql = 'INSERT INTO ' . static::$table . '
          (' . implode(', ', $cols) . ')
          VALUES
          (' . implode(', ', array_keys($data)) . ')
@@ -74,14 +74,14 @@ abstract class AbstractModel
 
     }
 
-    public function deleteNews($id)
+    public function deleteNews()
     {
         $sql = 'DELETE FROM ' . static::$table . ' WHERE id=:id';
         $db = new DB();
-        $db->execute($sql, [':id' => $id]);
+        $db->execute($sql, [':id' => $this->id]);
     }
 
-    public function update()
+    protected function update()
     {
         $cols = [];
         $data = [];
@@ -95,5 +95,14 @@ abstract class AbstractModel
         $sql = 'UPDATE ' . static::$table . ' SET ' . implode(', ', $cols) . ' WHERE id=:id';
         $db = new DB();
         $db->execute($sql, $data);
+    }
+
+    public function save()
+    {
+        if(!isset($this->id)) {
+            $this->insert();
+        } else {
+            $this->update();
+        }
     }
 }

@@ -6,7 +6,7 @@ class Controller_DeleteNews
     public function actionDelete()
     {
         $item = new NewsModel();
-        $this->id = $_POST['id'];
+        $item->id = $_GET['id'];
         $item->deleteNews();
         $view = new View();
         $view->item = $item;

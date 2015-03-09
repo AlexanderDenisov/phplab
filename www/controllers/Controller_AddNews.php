@@ -10,7 +10,7 @@ class Controller_AddNews
         $article->date = $_POST['date'];
         $article->title = $_POST['title'];
         $article->text_news = $_POST['text_news'];
-        $article->insert();
+        $article->save();
         $view = new View();
         $view->item = $article;
         $view->display('template_OneNews.php');

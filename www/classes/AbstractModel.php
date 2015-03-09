@@ -2,7 +2,7 @@
 
 
 abstract class AbstractModel
-    //implements IModel
+    implements IModel
 {
     static protected $table;
     protected $data = [];
@@ -39,7 +39,7 @@ abstract class AbstractModel
         return $db->query($sql, [':id' => $id])[0];
     }
 
-    public function insert()
+    protected function insert()
     {
 
         $cols = array_keys($this->data);

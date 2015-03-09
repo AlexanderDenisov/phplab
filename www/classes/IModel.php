@@ -1,11 +1,21 @@
 <?php
 
 
-/*interface IModel
+interface IModel
 {
-    public static function getAll();
+    public function __set($k, $v);
 
-    public static function getOne($id);
+    public function __get($k);
 
-    public static function addOneNews();
-} */
+    public function __isset($k);
+
+    public static function findAll();
+
+    public static function findOneByPk($id);
+
+    public static function findByColumn($column, $values);
+
+    public function deleteNews();
+
+    public function save();
+}

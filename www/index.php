@@ -12,4 +12,13 @@ $controllerClassName = 'Controller_' . $ctrl;
 //require_once __DIR__ . '/controllers/' . $controllerClassName . '.php';
 $controller = new $controllerClassName;
 $method = 'action' . $act;
-$controller->$method();
+
+try {
+
+    $controller->$method();
+} catch (Exception $e) {
+    $view = new View();
+    $view->error = $e->getMessage();
+    error_log('You messed up!', 3, __DIR__ . '/errors.log');
+    $view->display('template_view.php');
+}

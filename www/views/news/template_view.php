@@ -11,6 +11,7 @@
 <div><a href="">Войти</a></div>
 <div><a href="index.php?ctrl=AddNews&act=Add">Добавить новость</a></div>
 <div>----------------------------------------------------------------</div>
-<?php //include __DIR__ . '/' . $template_content; ?>
+<?php echo $error; ?>
+
 </body>
 </html>

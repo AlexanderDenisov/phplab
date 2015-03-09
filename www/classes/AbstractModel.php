@@ -66,15 +66,6 @@ abstract class AbstractModel
         $db->setClassName(get_called_class());
         $sql = 'SELECT * FROM ' . static::$table . ' WHERE ' . $column . ' =:values LIMIT 0, 50 ';
         $res = $db->query($sql, [':values' => $values]);
-
-        if (empty($res)) {
-            $e = new ModelException('Ничего не найдено');
-            throw $e;
-        }
-
-        /*if (!empty($res)) {
-            return $res[0];
-        } else {*/
             return $res[0];
         }
 

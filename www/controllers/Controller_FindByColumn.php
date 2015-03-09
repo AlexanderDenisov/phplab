@@ -4,11 +4,14 @@ class Controller_FindByColumn
 {
     public function actionFind()
     {
-        //try {
-            $item = NewsModel::findByColumn($_POST['column'], $_POST['values']);
-        /*} catch (ModelException $e) {
-            die ('Что-то пошло не так.');
-        }*/
+        $item = NewsModel::findByColumn($_POST['column'], $_POST['values']);
+
+        if (empty($item)) {
+            $e = new E404Exception(date('d.m.Y H:i:s') . ' Поиск статьи по ' . $_POST['column'] . ' = ' . $_POST['values'] . ' результатов не дал.' . "\r\n");
+            throw $e;
+        }
+
+
         $view = new View();
         $view->item = $item;
         $view->display('template_OneNews.php');

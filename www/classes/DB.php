@@ -5,12 +5,21 @@ class DB
     private $dbh;
     private $className = 'stdClass';
 
-    /**
-     *
-     */
+
     public function __construct()
     {
-        $this->dbh = new PDO('mysql:dbname=test;host=localhost', 'root', '');
+        try {
+            if (!$this->dbh = new PDO('mysql:dbname=test;host=localhost', 'root', '')) {
+                $this->dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $e = new PDOException();
+                throw $e;
+            }
+        } catch (PDOException $e) {
+            $view = new View();
+            error_log($view->error = $e->getMessage(), 3, __DIR__ . '/../errors.log');
+            $view->display('/template_403.php');
+            die;
+        }
     }
 
     public function setClassName($className)

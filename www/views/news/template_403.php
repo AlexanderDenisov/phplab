@@ -1,12 +1,14 @@
+<?php
+header($_SERVER['SERVER_PROTOCOL'].' 403 Forbidden');
+?>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-    <title>Access forbidden (403)</title>
+    <title>403 Доступ запрещен</title>
     <style type="text/css">
         body { background-color: #fff; color: #666; text-align: center; font-family: arial, sans-serif; }
         div.dialog {
@@ -24,7 +26,9 @@
 <body>
 
 <div class="dialog">
-    <h1>Access forbidden.</h1>
+    <h1>403 Доступ запрещен</h1>
+    <?php echo $error; ?>
+
 </div>
 </body>
 </html>

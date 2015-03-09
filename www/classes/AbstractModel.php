@@ -66,7 +66,7 @@ abstract class AbstractModel
         $db->setClassName(get_called_class());
         $sql = 'SELECT * FROM ' . static::$table . ' WHERE ' . $column . ' =:values LIMIT 0, 50 ';
         $res = $db->query($sql, [':values' => $values]);
-        if(!empty($res)) {
+        if (!empty($res)) {
             return $res[0];
         } else {
             return false;
@@ -81,4 +81,19 @@ abstract class AbstractModel
         $db->execute($sql, [':id' => $id]);
     }
 
+    public function update()
+    {
+        $cols = [];
+        $data = [];
+        foreach ($this->data as $k => $v) {
+            $data[':' . $k] = $v;
+            if ('id' == $k) {
+                continue;
+            }
+            $cols[] = $k . '=:' . $k;
+        }
+        $sql = 'UPDATE ' . static::$table . ' SET ' . implode(', ', $cols) . ' WHERE id=:id';
+        $db = new DB();
+        $db->execute($sql, $data);
+    }
 }

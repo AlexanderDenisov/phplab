@@ -3,8 +3,6 @@
 <div><?php echo $item->text_news; ?>
     <a href="/index.php?ctrl=AllNews&act=All"> <<< Назад к списку новостей</a></div>
 
+<div><?php include __DIR__ . '/template_Delete.php'; ?></div>
 
-<form action="/index.php?ctrl=DeleteNews&act=Delete&id=<?php echo $item->id; ?>" method="post"
-      enctype="multipart/form-data">
-    <div><input type="submit" value="Удалить статью"></div>
-</form>
+<div><?php include __DIR__ . '/template_Update.php'; ?></div>

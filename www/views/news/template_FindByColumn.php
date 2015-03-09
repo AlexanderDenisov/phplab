@@ -1,4 +1,4 @@
-<form action="/index.php?ctrl=FindByColumn&act=Find" method="post" enctype="multipart/form-data">
+<form action="/index.php?ctrl=FindByColumn&act=Find" method="post">
 
     <div><select name="column">
             <option selected="selected">Выберите атрибут поиска</option>
@@ -8,7 +8,6 @@
 
     <div><label for="values">Введите значение для поиска</label></div>
     <div><textarea id="values" rows="10" cols="25" maxlength="250" name="values"></textarea></div>
-
 
     <div><input type="submit" value="Найти"></div>
 </form>

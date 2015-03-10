@@ -14,6 +14,8 @@ class OneNews
             $e = new \E404Exception(date('d.m.Y H:i:s') . ' Статья с ID ' . $id . ' удалена или перемещена' . "\r\n");
             throw $e;
         }
+        /*echo json_encode($item);
+        die;*/
         $view = new \View();
         $view->item = $item;
         $view->display('template_OneNews.php');

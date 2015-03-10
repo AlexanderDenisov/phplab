@@ -1,6 +1,17 @@
 <?php
 
 
+/*
+$content = file_get_contents(__DIR__ .'/test.json');
+$obj = json_decode($content);
+echo $obj->foo;
+
+$obj = new stdClass();
+$obj->title = 'War and Peace';
+$obj->text = 'The most longest text';
+echo json_encode($obj);
+die;
+*/
 
 
 require_once __DIR__ . '/autoload.php';

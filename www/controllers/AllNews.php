@@ -9,7 +9,7 @@ class AllNews
     public function actionAll()
     {
         $all_articles = News::findAll();
-        /*echo json_encode($all_article);
+        /*echo json_encode($all_articles);
         die;*/
         $view = new \View();
         $view->items = $all_articles;

@@ -1,6 +1,10 @@
-RewriteEngine On
-RewriteCond %{REQUEST_FILENAME} !-d
+RewriteEngine on
+
+RewriteBase /
+
+RewriteRule ^$ index.php [QSA,L]
+
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^([^/]*)$ /index.php?ctrl=$1&act=All [L,QSA]
-RewriteRule ^([^/]*)/([^/]*)$ /index.php?ctrl=$1&act=One&id=$2 [L,QSA]
-#RewriteRule ^([^/]*)$ /index.php?ctrl=$1&act=Add [L,QSA]
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-l
+RewriteRule ^(.*)$ index.php [QSA]

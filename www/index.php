@@ -1,14 +1,28 @@
 <?php
 
-//error_reporting(E_ALL);
+
+
 
 require_once __DIR__ . '/autoload.php';
 
-$ctrl = isset($_GET['ctrl']) ? $_GET['ctrl'] : 'AllNews';
-$act = isset($_GET['act']) ? $_GET['act'] : 'All';
+
+$path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+$pathParts = explode('/', $path);
+
+var_dump($path);
+var_dump($pathParts);
 
 
-$controllerClassName = 'Controller_' . $ctrl;
+
+$ctrl = !empty($pathParts[1]) ? ucfirst($pathParts[1]) : 'AllNews';
+$act = !empty($pathParts[2]) ? ucfirst($pathParts[2]) : 'All';
+
+var_dump($ctrl);
+var_dump($act);
+
+
+
+$controllerClassName = 'Application\\Controllers\\' . $ctrl;
 
 
 try {

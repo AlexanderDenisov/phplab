@@ -1,11 +1,13 @@
 <?php
 
+namespace Application\Controllers;
+use Application\Models\News;
 
-class Controller_ReadLogFile {
+class ReadLogFile {
 
     public function actionReadErr()
     {
-        $errlog = new NewsModel();
+        $errlog = new News();
         $path = __DIR__ . '/../errors.log';
         $errlog->viewErrLog($path);
     }

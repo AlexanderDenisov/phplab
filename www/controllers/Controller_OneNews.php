@@ -9,7 +9,7 @@ class Controller_OneNews
         $id = $_GET['id'];
         $item = NewsModel::findOneByPk($id);
         if (empty($item)) {
-            $e = new E404Exception(date('d.m.Y H:i:s') . ' Статья удалена или перемещена' . "\r\n");
+            $e = new E404Exception(date('d.m.Y H:i:s') . ' Статья с ID ' . $id . ' удалена или перемещена' . "\r\n");
             throw $e;
         }
         $view = new View();

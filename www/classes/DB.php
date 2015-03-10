@@ -8,19 +8,14 @@ class DB
 
     public function __construct()
     {
-        try {
-            if (!$this->dbh = new PDO('mysql:dbname=test;host=localhost', 'root', '')) {
+            if (!$this->dbh = new PDO('mysql:dbname=test;host=localhost', 'root', ''))
+            {
                 $this->dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                $e = new PDOException();
-                throw $e;
+                $erdbh = new PDOException();
+                throw $erdbh;
             }
-        } catch (PDOException $e) {
-            $view = new View();
-            error_log($view->error = $e->getMessage(), 3, __DIR__ . '/../errors.log');
-            $view->display('/template_403.php');
-            die;
-        }
     }
+
 
     public function setClassName($className)
     {

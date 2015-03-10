@@ -100,4 +100,12 @@ abstract class AbstractModel
             $this->update();
         }
     }
+
+    public function viewErrLog($path)
+    {
+        $lines = file($path);
+        foreach ($lines as $line_num => $line) {
+            echo '# ' . $line_num . ' : ' . $line . "<br />\n";
+        }
+    }
 }

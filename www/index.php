@@ -18,11 +18,10 @@ try {
     $controller->$method();
 } catch (E404Exception $e) {
     $view = new View();
-    //$view->error = $e->getMessage();
     error_log($view->error = $e->getMessage(), 3, __DIR__ . '/errors.log');
     $view->display('/template_404.php');
 } catch (PDOException $erdbh) {
     $view = new View();
-    error_log($view->error = $erdbh->getMessage(), 3, __DIR__ . '/../errors.log');
+    error_log($view->error = $erdbh->getMessage(), 3, __DIR__ . '/errors.log');
     $view->display('/template_403.php');
 }

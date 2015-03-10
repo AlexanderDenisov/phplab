@@ -23,3 +23,6 @@ SQLSTATE[HY000] [1049] Unknown database 'test12'
 SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo failed: ���� ���� ����������.
 SQLSTATE[HY000] [1045] Access denied for user 'root111'@'localhost' (using password: NO)
 10.03.2015 22:19:05 Статья с ID  удалена или перемещена
+SQLSTATE[HY000] [1049] Unknown database 'test12'SQLSTATE[HY000] [1049] Unknown database 'test12'
+10.03.2015 23:07:40 Статья с ID  удалена или перемещена
+SQLSTATE[HY000] [1049] Unknown database 'test112233'SQLSTATE[HY000] [1049] Unknown database 'test112233'

@@ -1,8 +1,9 @@
 <?php
 
+namespace Application\Classes;
 
 class MyIterator
-    implements Iterator
+    implements \Iterator
 {
     private $data = [];
 

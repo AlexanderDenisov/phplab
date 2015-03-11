@@ -1,6 +1,7 @@
 <?php
 
 namespace Application\Models;
+use Application\Classes\AbstractModel;
 
 /**
  * Class News
@@ -10,9 +11,9 @@ namespace Application\Models;
  * @property $text_news;
  */
 class News
-    extends \AbstractModel
+    extends AbstractModel
 {
-    protected static $table = 'pages';
+    protected static $table = 'news';
 
 }
 

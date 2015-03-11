@@ -1,5 +1,7 @@
 <?php
 
+namespace Application\Classes;
+
 class DB
 {
     private $dbh;
@@ -8,10 +10,10 @@ class DB
 
     public function __construct()
     {
-            if (!$this->dbh = new PDO('mysql:dbname=test;host=localhost', 'root', ''))
+            if (!$this->dbh = new \PDO('mysql:dbname=test;host=localhost', 'root', ''))
             {
-                $this->dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                $erdbh = new PDOException();
+                $this->dbh->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+                $erdbh = new \PDOException();
                 throw $erdbh;
             }
     }
@@ -26,7 +28,7 @@ class DB
     {
         $sth = $this->dbh->prepare($sql);
         $sth->execute($params);
-        return $sth->fetchAll(PDO::FETCH_CLASS, $this->className);
+        return $sth->fetchAll(\PDO::FETCH_CLASS, $this->className);
     }
 
     public function execute($sql, $params = [])

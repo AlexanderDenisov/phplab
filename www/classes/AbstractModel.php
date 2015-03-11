@@ -1,5 +1,8 @@
 <?php
 
+namespace Application\Classes;
+
+
 
 abstract class AbstractModel
     implements IModel
@@ -103,9 +106,9 @@ abstract class AbstractModel
 
     public function viewErrLog($path)
     {
-        $lines = file($path);
-        foreach ($lines as $line_num => $line) {
-            echo '# ' . $line_num . ' : ' . $line . "<br />\n";
+        $logfile = file($path);
+        foreach ($logfile as $line_num => $log) {
+            echo '# ' . $line_num . ' : ' . $log . "<br />\n";
         }
     }
 }

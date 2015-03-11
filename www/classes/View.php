@@ -1,5 +1,8 @@
 <?php
 
+namespace Application\Classes;
+
+
 class View
 {
 

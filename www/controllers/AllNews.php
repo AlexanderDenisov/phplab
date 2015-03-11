@@ -2,6 +2,7 @@
 
 namespace Application\Controllers;
 use Application\Models\News;
+use Application\Classes\View;
 
 class AllNews
 {
@@ -11,7 +12,7 @@ class AllNews
         $all_articles = News::findAll();
         /*echo json_encode($all_articles);
         die;*/
-        $view = new \View();
+        $view = new View();
         $view->items = $all_articles;
         $view->display('template_AllNews.php');
     }

@@ -75,7 +75,7 @@ header($_SERVER['SERVER_PROTOCOL'] . ' 404 Not Found');
         <img src="images/404-1.png"/>
 
         <div class="sub">
-            <p><a href="/index.php">На главную </a></p>
+            <p><a href="/">На главную </a></p>
         </div>
     </div>
 </div>

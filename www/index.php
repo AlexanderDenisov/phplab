@@ -1,5 +1,6 @@
 <?php
-
+use Application\Classes\E404Exception;
+use Application\Classes\View;
 
 /*
 $content = file_get_contents(__DIR__ .'/test.json');

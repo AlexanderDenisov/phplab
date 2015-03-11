@@ -12,7 +12,7 @@ namespace Application\Models;
 class News
     extends \AbstractModel
 {
-    protected static $table = 'news';
+    protected static $table = 'pages';
 
 }
 

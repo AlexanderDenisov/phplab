@@ -17,7 +17,7 @@ class View
         }
 
         ob_start();
-        include __DIR__ . '/../views/news/' . $template;
+        include __DIR__ . '/../views/pages/' . $template;
         $template_content = ob_get_contents();
         ob_end_clean();
         return $template_content;

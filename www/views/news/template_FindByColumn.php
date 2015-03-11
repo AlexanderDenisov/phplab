@@ -1,4 +1,4 @@
-<form action="/index.php?ctrl=FindByColumn&act=Find" method="post">
+<form action="/FindByColumn/Find" method="post">
 
     <div><select name="column">
             <option selected="selected">Выберите атрибут поиска</option>

@@ -20,17 +20,8 @@ require_once __DIR__ . '/autoload.php';
 $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $pathParts = explode('/', $path);
 
-var_dump($path);
-var_dump($pathParts);
-
-
-
 $ctrl = !empty($pathParts[1]) ? ucfirst($pathParts[1]) : 'AllNews';
 $act = !empty($pathParts[2]) ? ucfirst($pathParts[2]) : 'All';
-
-var_dump($ctrl);
-var_dump($act);
-
 
 
 $controllerClassName = 'Application\\Controllers\\' . $ctrl;

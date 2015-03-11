@@ -12,4 +12,3 @@ function autoloader($class)
 
 spl_autoload_register('autoloader');
 require __DIR__ .'/../vendor/autoload.php';
-//require __DIR__ . '/../vendor/phpmailer/phpmailer/PHPMailerAutoload.php';

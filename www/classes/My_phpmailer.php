@@ -14,7 +14,7 @@ class My_phpmailer extends \PHPMailer {
 
 
     public function send() {
-        $this->Subject = '[Yay for me!] '.$this->Subject;
+        //$this->Subject = '[Yay for me!] '.$this->Subject;
         return parent::send();
     }
 

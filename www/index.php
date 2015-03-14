@@ -1,6 +1,10 @@
 <?php
+
 use Application\Classes\E404Exception;
 use Application\Classes\View;
+
+
+
 
 /*
 $content = file_get_contents(__DIR__ .'/test.json');
@@ -17,6 +21,7 @@ die;
 
 require_once __DIR__ . '/autoload.php';
 
+$timer = PHP_Timer::start();
 
 $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $pathParts = explode('/', $path);

@@ -72,7 +72,7 @@ header($_SERVER['SERVER_PROTOCOL'] . ' 404 Not Found');
 <div class="wrap">
     <div class="logo">
         <p><?php echo $error; ?></php></p>
-        <img src="images/404-1.png"/>
+        <img src="/images/404-1.png"/>
 
         <div class="sub">
             <p><a href="/">На главную </a></p>

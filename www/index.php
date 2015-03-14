@@ -41,4 +41,8 @@ try {
     $view = new View();
     error_log($view->error = $erdbh->getMessage(), 3, __DIR__ . '/errors.log');
     $view->display('/template_403.php');
+} catch (phpmailerException $msgerror) {
+    $view = new View();
+    error_log($view->error = $msgerror->errorMessage(), 3, __DIR__ . '/errors.log');
+    die;
 }

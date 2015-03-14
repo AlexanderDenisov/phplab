@@ -1,6 +1,7 @@
 <?php
 
 namespace Application\Controllers;
+
 use Application\Models\News;
 use Application\Classes\View;
 use Application\Classes\E404Exception;
@@ -16,23 +17,18 @@ class AddNews
         $article->title = $_POST['title'];
         $article->text_news = $_POST['text_news'];
         $article->save();
-
-        $mail = new My_phpmailer;
-
-        $mail->addAddress('ad060778@gmail.com', 'Александр Денисов');
-        $mail->Subject = 'Добавлена новая статья';
-        $mail->Body = 'Новая статья';
-
-        if(!$mail->send()) {
-            $e = new E404Exception(date('d.m.Y H:i:s') . ' Сообщение о добавлении новой статьи не отправлено!!!' . "\r\n");
-            throw $e;
-        }
-        $mail->clearAddresses();
-        $mail->clearAttachments();
-
         $view = new View();
         $view->item = $article;
         $view->display('template_OneNews.php');
-    }
 
+        $mail = new My_phpmailer(true);
+        $mail->CharSet = 'utf-8';
+        $mail->isSMTP();
+        $mail->addAddress('ad060778@gmail.com');
+        $mail->Subject = 'Добавлена новая статья';
+        $mail->Body = date('d.m.Y H:i:s') . ' На сайт test.local добавлена новая статья';
+        $mail->send();
+        $mail->clearAddresses();
+        $mail->clearAttachments();
+    }
 }
